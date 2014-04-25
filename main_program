@@ -1,0 +1,265 @@
+#include <Servo.h>
+Servo th1,kn1,th3,kn3,th5,kn5,th2,kn2,th4,kn4,th6,kn6;
+int xbdata;
+
+
+void setup() 
+{
+  Serial.begin(9600);
+  Serial.println("8-forward 6-right 4-left 2-right 5-stop");
+  
+  th6.attach(13);
+  th5.attach(12);
+  th4.attach(11);
+  th3.attach(10);
+  th2.attach(9);
+  th1.attach(8);
+  
+  kn6.attach(7);
+  kn5.attach(6);
+  kn4.attach(5);
+  kn3.attach(4);
+  kn2.attach(3);
+  kn1.attach(2);
+  
+  delay(1000)
+  kn1.write(70);
+  kn2.write(95);
+  kn3.write(85);  
+  kn4.write(98);
+  kn5.write(105);
+  kn6.write(93);
+  
+  th1.write(86);
+  th2.write(93);
+  th3.write(88);
+  th4.write(85);
+  th5.write(87);
+  th6.write(78);
+  
+  delay(2000);
+
+
+}
+
+void loop() 
+{
+  
+  
+  if(Serial.available())
+   {
+     xbdata=Serial.read();
+   } 
+    switch(xbdata) {
+      
+    case '8':
+    Serial.println("Move Forward");
+    //1
+    kn1.write(70);
+    kn3.write(85);
+    kn5.write(105);
+    delay(300);
+    
+    kn2.write(131);
+    kn4.write(65);
+    kn6.write(51);  
+    th2.write(66);
+    th4.write(113);
+    th6.write(78);
+    delay(300);
+    
+    
+    th1.write(86);
+    th3.write(117);
+    th5.write(87);
+    delay(300);
+    
+    //2 
+  
+    kn2.write(95);
+    kn4.write(98);
+    kn6.write(93);
+    delay(300);
+  
+  
+   
+    kn1.write(107);
+    kn3.write(132);
+    kn5.write(67); 
+    th1.write(58);
+    th3.write(88);
+    th5.write(115); 
+ 
+    delay(300);
+  
+    th2.write(93);
+    th4.write(85);
+    th6.write(52);
+    delay(300);
+
+    break;
+     
+    case '2':
+    Serial.println("Move Backward");
+        
+  
+//11111111111111111
+  kn1.write(71);
+  kn3.write(88);
+  kn5.write(112);
+  delay(300);
+  
+  kn2.write(55);
+  kn4.write(135);
+  kn6.write(121);  
+  th2.write(111);
+  th4.write(85);
+  th6.write(52);
+  delay(300);
+  
+  
+  th1.write(61);
+  th3.write(88);
+  th5.write(87);
+  delay(300);
+  
+  
+ //2222222222222222222222222222 
+  
+  kn2.write(88);
+  kn4.write(98);
+  kn6.write(97);
+  delay(300);
+  
+  
+  
+  kn1.write(31);
+  kn3.write(60);
+  kn5.write(150); 
+ th1.write(86);
+  th3.write(117);
+  th5.write(66); 
+ 
+  delay(300);
+  
+  th2.write(93);
+  th4.write(113);
+  th6.write(78);
+  delay(300);
+    break;
+    
+    case '4':
+    Serial.println("Rotate Left");
+      //11111111111111111
+  kn1.write(70);
+  kn3.write(85);
+  kn5.write(105);
+  delay(300);
+  
+  kn2.write(55);
+  kn4.write(68);
+  kn6.write(51);  
+  th2.write(93);
+  th4.write(113);
+  th6.write(78);
+  delay(300);
+  
+  
+  th1.write(58);
+  th3.write(88);
+  th5.write(87);
+  delay(300);
+ //2222222222222222222222222222 
+  
+  kn2.write(95);
+  kn4.write(98);
+  kn6.write(93);
+  delay(300);
+  
+  
+  
+  kn1.write(23);
+  kn3.write(55);
+  kn5.write(65); 
+ th1.write(86);
+  th3.write(117);
+  th5.write(115); 
+ 
+  delay(300);
+  
+  th2.write(65);
+  th4.write(85);
+  th6.write(52);
+  delay(300);
+
+    break;
+   
+    
+    case '6':
+    Serial.println("Rotate Right");
+      
+ //11111111111111111
+  kn1.write(70);
+  kn3.write(85);
+  kn5.write(105);
+  delay(300);
+  
+  kn2.write(130);
+  kn4.write(142);
+  kn6.write(124);  
+  th2.write(67);
+  th4.write(85);
+  th6.write(59);
+  delay(300);
+  
+  
+  th1.write(86);
+  th3.write(113);
+  th5.write(115);
+  delay(300);
+  
+  //2222
+  kn2.write(92);
+  kn4.write(98);
+  kn6.write(95);
+  delay(300);
+  
+  kn1.write(102);
+  kn3.write(130);
+  kn5.write(149);
+  th1.write(58);
+  th3.write(88);
+  th5.write(87);
+  delay(300);
+  
+  th2.write(93);
+  th4.write(113);
+  th6.write(78);
+  delay(300);
+
+    break;
+    
+    
+    case '5':
+    Serial.println("Stop");
+      delay(1000)
+  kn1.write(70);
+  kn2.write(95);
+  kn3.write(85);  
+  kn4.write(98);
+  kn5.write(105);
+  kn6.write(93);
+  
+  th1.write(86);
+  th2.write(93);
+  th3.write(88);
+  th4.write(85);
+  th5.write(87);
+  th6.write(78);
+  
+  delay(2000);
+
+    break;
+    
+    }
+}
